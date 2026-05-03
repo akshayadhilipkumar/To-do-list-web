@@ -1,10 +1,3 @@
-/**
- * Simple To-Do List App
- * ---------------------
- * - Saves tasks to localStorage (key: "todo-app-tasks")
- * - Dark mode preference: "todo-app-theme"
- * Beginner tips: read from top to bottom; each section has a short comment.
- */
 
 (function () {
   "use strict";

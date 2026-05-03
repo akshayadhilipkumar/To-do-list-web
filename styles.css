@@ -1,6 +1,4 @@
-/* ============================================
-   CSS variables — colors & spacing (easy theming)
-   ============================================ */
+
 :root {
   --font: "DM Sans", system-ui, sans-serif;
   --radius: 16px;

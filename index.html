@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My To-Do List</title>
+  <!-- Google font for a clean, modern look -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Decorative background blobs (pure CSS handles positioning) -->
+  <div class="bg-blobs" aria-hidden="true"></div>
+
+  <main class="app">
+    <header class="app__header">
+      <div class="app__title-row">
+        <h1 class="app__title">Tasks</h1>
+        <!-- Dark mode: toggles a class on <html> and saves preference -->
+        <button type="button" class="btn btn--icon theme-toggle" id="themeToggle" aria-label="Toggle dark mode" title="Dark / Light mode">
+          <span class="theme-toggle__sun" aria-hidden="true">☀️</span>
+          <span class="theme-toggle__moon" aria-hidden="true">🌙</span>
+        </button>
+      </div>
+      <p class="app__subtitle">Stay organized — one task at a time.</p>
+    </header>
+
+    <!-- Stats: total tasks and how many are done -->
+    <section class="stats" aria-live="polite">
+      <div class="stats__item">
+        <span class="stats__value" id="totalCount">0</span>
+        <span class="stats__label">Total</span>
+      </div>
+      <div class="stats__item stats__item--accent">
+        <span class="stats__value" id="completedCount">0</span>
+        <span class="stats__label">Completed</span>
+      </div>
+    </section>
+
+    <!-- Add new task -->
+    <form class="add-form" id="addForm" autocomplete="off">
+      <label class="sr-only" for="taskInput">New task</label>
+      <input
+        type="text"
+        id="taskInput"
+        class="add-form__input"
+        placeholder="What needs to be done?"
+        maxlength="200"
+        required
+      />
+      <button type="submit" class="btn btn--primary">Add Task</button>
+    </form>
+
+    <!-- Filter tabs: show all, only done, or only pending -->
+    <nav class="filters" role="tablist" aria-label="Filter tasks">
+      <button type="button" class="filters__btn filters__btn--active" data-filter="all" role="tab" aria-selected="true">All</button>
+      <button type="button" class="filters__btn" data-filter="pending" role="tab" aria-selected="false">Pending</button>
+      <button type="button" class="filters__btn" data-filter="completed" role="tab" aria-selected="false">Completed</button>
+    </nav>
+
+    <!-- Task list container -->
+    <ul class="task-list" id="taskList" aria-label="Your tasks"></ul>
+
+    <!-- Empty state when there are no tasks (or none match filter) -->
+    <p class="empty-state" id="emptyState" hidden>No tasks yet. Add one above!</p>
+
+    <footer class="app__footer">
+      <button type="button" class="btn btn--ghost btn--small" id="clearAllBtn" title="Remove every task">
+        Clear all tasks
+      </button>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>
